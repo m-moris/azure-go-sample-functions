@@ -1,17 +1,18 @@
 # Go Azure Functions 
 
-Go を Azure Functions で実行するサンプルで、カスタムハンドラを使って実装している。
+[日本語 (Japanese)](./README.ja.md)
+
+This sample executes Azure Functions in the Go language and is implemented using custom handlers for Azure Functions.
 
 [Azure Functions custom handlers | Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers)
 
+## Description
 
-## 説明
+The folder structure is as follows
 
-フォルダ構成は以下の通り
-
-* `functions.json`は、`ファンクション名/Functions` 配下に配置
-* `host.json` と `local.settings.json` は、ルート配下にあるものがオリジナルで、実行時に`Functions` へコピーされる。実行ファイル `main` も同様
-* 今回は HTTPトリガーのみなので、 `enableForwardingHttpRequest` を `true` にしてある
+* Place `functions.json` under `{FunctioName}/Functions` 
+* The `host.json` and `local.settings.json` are the originals under root and are copied to `Functions` at runtime. The same goes for the executable `main`.
+* In this case, enableForwardingHttpRequest is set to true since this is an HTTP trigger only.
  
 
 ```
@@ -32,9 +33,9 @@ Go を Azure Functions で実行するサンプルで、カスタムハンドラ
             function.json
 ```
 
-## ローカル実行
+## Local execution
 
-`az` と `go` がインストールされていれば、ローカル環境で実行できる。`make run` で実行可能。
+If `az` and `go` are installed, it can be run in a local environment. You can run it with `make run`.
 
 ```sh
 % make run
@@ -60,15 +61,16 @@ For detailed output, run func with --verbose flag.
 [2021-07-16T07:24:32.485Z] Worker process started and initialized
 ```
 
-## デプロイ
+## Deploy
 
-Azure Functions を以下の設定で作成する。
+Create Azure Functions with the following configuration
 
 * Linux
-* カスタムハンドラ
-* 名前、リージョン等は任意
+* Custom handlers
+* Name, region, etc. optional
+
  
-`Makefile` の `FUNCNAME` を、作成した名前に書き換える。`az login` してから`make deploy` デプロイする。
+ Rewrite `FUNCNAME` in the `Makefile` to the name you created. `az login` and deploy make deploy.
 
 ```sh
 $ make deploy
@@ -88,7 +90,7 @@ Functions in somefunctionsname:
         Invoke url: https://somefunctionsname.azurewebsites.net/api/ping
 ```
 
-`make test` で `curl` を叩く。
+When you `make test`, Azure Functions will be called with `curl`.
 
 ```
 $ make test
