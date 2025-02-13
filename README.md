@@ -6,6 +6,15 @@ This sample executes Azure Functions in the Go language and is implemented using
 
 [Azure Functions custom handlers | Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers)
 
+## Update 
+
+### :new: 2025/02
+- Update host.json
+- Update go version to 1.23
+- Update core tools version
+- Add logging and error handling
+
+
 ## Description
 
 The folder structure is as follows
@@ -38,15 +47,19 @@ The folder structure is as follows
 If `az` and `go` are installed, it can be run in a local environment. You can run it with `make run`.
 
 ```sh
-% make run
+$ make run
 go build -o main main.go
 cp ./host.json ./local.settings.json ./main Functions/
 cd Functions && func host start
 
 Azure Functions Core Tools
-Core Tools Version:       3.0.3477 Commit hash: 5fbb9a76fc00e4168f2cc90d6ff0afe5373afc6d  (64-bit)
-Function Runtime Version: 3.0.15584.0
+Core Tools Version:       4.0.6610 Commit hash: N/A +0d55b5d7efe83d85d2b5c6e0b0a9c1b213e96256 (64-bit)
+Function Runtime Version: 4.1036.1.23224
 
+[2025-02-13T07:03:12.277Z] Go server Listening on:  41049
+[2025-02-13T07:03:12.281Z] Worker process started and initialized.
+[2025-02-13T07:03:12.282Z] {"level":"info","ts":1739430192.27376,"caller":"azure-go-sample-functions/main.go:22","msg":"Start Go functions"}
+[2025-02-13T07:03:12.285Z] {"level":"info","ts":1739430192.2738538,"caller":"azure-go-sample-functions/main.go:25","msg":"FUNCTIONS_CUSTOMHANDLER_PORT: 41049"}
 
 Functions:
 
@@ -55,10 +68,7 @@ Functions:
         ping: [GET] http://localhost:7071/api/ping
 
 For detailed output, run func with --verbose flag.
-[2021-07-16T07:24:32.452Z] Start Go functions
-[2021-07-16T07:24:32.452Z] FUNCTIONS_CUSTOMHANDLER_PORT: 34137
-[2021-07-16T07:24:32.452Z] Go server Listening on:  34137
-[2021-07-16T07:24:32.485Z] Worker process started and initialized
+[2025-02-13T07:03:17.258Z] Host lock lease acquired by instance ID '0000000000000000000000002BE192DD'.
 ```
 
 ## Deploy
