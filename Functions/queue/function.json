@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "name": "queue",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "input",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "$return",
+      "type": "queue",
+      "direction": "out",
+      "queueName": "output",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
